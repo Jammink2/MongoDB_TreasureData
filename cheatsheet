@@ -1,0 +1,58 @@
+## Running the ibeacon script
+$ ruby ibeacon_simulator.rb "<your Treasure Data Write API Key>" 500
+
+## Treasure Data Console (make sure you have an account!)
+https://console.treasuredata.com
+
+## Setting up your remote MongoDB instance:
+https://aws.amazon.com/blogs/aws/mongodb-on-the-aws-cloud-new-quick-start-reference-deployment/
+or use https://mongolab.com
+
+Connect to the database (on AWS, use URI String if using MongoLab)
+$ mongo ec2-54-204-235-XX.compute-1.amazonaws.com
+
+## Basic MongoDB commands
+use database
+> use aws__mongo
+> show dbs
+
+find out what collections exist
+> db.getCollectionNames()
+or
+> show collections
+
+Create new collections
+> db.createCollection("ibeacon_data")
+
+Run treasure data query to export collections
+url: https://console.treasuredata.com/jobs/27085511
+
+Query the collection
+db["ibeacon_data"].find()
+or
+db.getCollection("ibeacon_data").find()
+
+Remove all documents
+> db.ibeacon_data.remove({})
+
+delete a database
+use <database>  #switch to database
+>db.dropDatabase()
+
+## More MongoDB commands:
+http://docs.mongodb.org/manual/reference/mongo-shell/
+
+## Basic Treasure Data Commands
+delete databases from Treasure Data using CLI
+$ td db:delete -f ibeacon_test
+
+List Tables on Treasure Data using CLI
+$ td tables
+
+List Databases on Treasure Data using CLI
+$ td databases
+
+## More Treasure Data CLI commands:
+http://docs.treasuredata.com/articles/td-cli
+
+
